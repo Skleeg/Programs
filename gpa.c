@@ -80,7 +80,7 @@ int main(void)
         {
             printf("\noh no\n");
         }
-        printf("\n\aYour GPA is : %.2f\n", hopefullyGPA);
+        printf("\n\aYour GPA is : %.2f\n\n", hopefullyGPA);
         //This returns the final calculated result to the user.
         }
         if ((calcResponse == '2') || (calcResponse == 'N'))
@@ -88,6 +88,7 @@ int main(void)
         {
             printf("\nWhat is your GPA? ");
             scanf("%f", &actualGPA);
-            printf("\n\aYour GPA is %.2f\n", actualGPA);
+            printf("\n\aYour GPA is %.2f\n\n", actualGPA);
         }
+    return 0;
 }
