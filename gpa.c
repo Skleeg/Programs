@@ -22,7 +22,6 @@ int main(void)
     float creditsTotal;
 
     float probablyGPA;
-    float hopefullyGPA;
     float actualGPA;
 
     printf("\n-=-=-=-GPA CALCULATOR-=-=-=-\n\n");
@@ -67,20 +66,20 @@ int main(void)
         creditsTotal = mathCredits + englishCredits + historyCredits + scienceCredits;
 
         probablyGPA = gradeTotal / creditsTotal;
-        hopefullyGPA = probablyGPA / 25;
+        probablyGPA = probablyGPA / 25;
         //This segment of code multiplies the given grades by the given credits.
         //Then, it adds the grades * credits together, as well as the total credits.
         //Lastly, it divides the grades * credits by the total credits, and divides the result by 25.
 
-        if (hopefullyGPA > 4)
+        if (probablyGPA > 4)
         {
             printf("\nliar\n");
         }
-        if (hopefullyGPA < 1)
+        if (probablyGPA < 1)
         {
             printf("\noh no\n");
         }
-        printf("\n\aYour GPA is : %.2f\n\n", hopefullyGPA);
+        printf("\n\aYour GPA is : %.2f\n\n", probablyGPA);
         //This returns the final calculated result to the user.
         }
         if ((calcResponse == '2') || (calcResponse == 'N'))
