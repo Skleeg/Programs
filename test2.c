@@ -44,6 +44,6 @@ int main(void)
         pennyAmount += 1;
     }
     printf("Coins used: %d\n\n", coinAmount);
-    printf("Breakdown: \nQuarters: %d\nDimes: %d\nNickels: %d\nPennies: %d\n", quarterAmount, dimeAmount, nickelAmount, pennyAmount);
+    printf("Breakdown: \nQuarters: %d\nDimes: %d\nNickels: %d\nPennies: %d\n\n", quarterAmount, dimeAmount, nickelAmount, pennyAmount);
     return 0;
 }
