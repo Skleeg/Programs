@@ -1,38 +1,33 @@
 #include <stdio.h>
+#include <string.h>
+//Header files to have the string related functions work properly.
 
 int main(void)
 {
-    //All these floats are the values used to ask for and calculate the GPA.
-    float mathGrade;
-    float englishGrade;
-    float historyGrade;
-    float scienceGrade;
+    //All these variables are the values used to ask for and calculate the GPA.
+    float mathGrade, englishGrade, historyGrade, scienceGrade;
 
-    float mathCredits;
-    float englishCredits;
-    float historyCredits;
-    float scienceCredits;
+    float mathCredits, englishCredits, historyCredits, scienceCredits;
 
-    float mathValue;
-    float englishValue;
-    float historyValue;
-    float scienceValue;
+    float mathValue, englishValue, historyValue, scienceValue;
 
-    float gradeTotal;
-    float creditsTotal;
+    float gradeTotal, creditsTotal;
 
-    float probablyGPA;
-    float actualGPA;
+    float probablyGPA, actualGPA;
+
+    float additionalGrade, additionalCredits, additionalValue;
+
+    char calcResponse[10], classResponse[10];
 
     printf("\n-=-=-=-GPA CALCULATOR-=-=-=-\n\n");
     printf("Would you like to use the GPA calculator, or the GPA repeater?\n");
-    printf("Press 1 for Calculator, and press 2 for repeater.");
-    char calcResponse;
-    scanf("%c", &calcResponse);
-    if ((calcResponse == '1') || (calcResponse == 'Y'))
-    //This segment of code asks if you would like to calculate your GPA,
-    //or if you would like to have it repeated to you.
-    //If you have it calculated, the following takes place.
+    printf("Type 'Yes' for the calculator, and type 'No' for your gpa ");
+    printf("to be repeated back to you.\n");
+    scanf("%s", calcResponse);
+    if ((strcmp(calcResponse, "Yes") == 0) || (strcmp(calcResponse, "yes") == 0))
+    /* This segment of code asks if you would like to calculate your GPA,
+    or if you would like to have it repeated to you.
+    If you have it calculated, the following takes place. */
     {
         printf("\n-=-Please enter your grades out of 100 points.-=-\n\n");
         printf("Please enter your math grade.\n");
@@ -56,20 +51,50 @@ int main(void)
         printf("Please enter your science credits.\n");
         scanf("%f", &scienceCredits);
         //The above asks for the credits you will earn in said classes.
+        printf("\nAre you taking any additonal classes?\n");
+        scanf("%s", classResponse);
 
+        float gradeAddition = 0;
+        float creditAddition = 0;
+
+        if (strcmp(classResponse, "Yes") == 0)
+        {
+            printf("Please enter the grade of this class.\n");
+            scanf("%f", &additionalGrade);
+            gradeAddition = additionalGrade + gradeAddition;
+            printf("Please enter the credits of this class.\n");
+            scanf("%f", &additionalCredits);
+            creditAddition = additionalCredits + creditAddition;
+            printf("Are you taking any additional classes?\n");
+            scanf("%s", classResponse);
+        }
+        printf("\n%.2f\n", additionalGrade);
+        printf("\n%.2f\n\n", additionalCredits);
         mathValue = mathGrade * mathCredits;
         englishValue = englishGrade * englishCredits;
         historyValue = historyGrade * historyCredits;
         scienceValue = scienceGrade * scienceCredits;
+        {
+            if (additionalGrade != 0 )
+            additionalValue = additionalGrade * additionalCredits;
+        }
 
-        gradeTotal = mathValue + englishValue + historyValue + scienceValue;
-        creditsTotal = mathCredits + englishCredits + historyCredits + scienceCredits;
+        if (additionalGrade + additionalCredits == 0)
+        {
+            gradeTotal = mathValue + englishValue + historyValue + scienceValue + additionalValue;
+            creditsTotal = mathCredits + englishCredits + historyCredits + scienceCredits + additionalCredits;
+        }
+        else 
+        {
+            gradeTotal = mathValue + englishValue + historyValue + scienceValue;
+            creditsTotal = mathCredits + englishCredits + historyCredits + scienceCredits;
+        }
 
         probablyGPA = gradeTotal / creditsTotal;
         probablyGPA = probablyGPA / 25;
-        //This segment of code multiplies the given grades by the given credits.
-        //Then, it adds the grades * credits together, as well as the total credits.
-        //Lastly, it divides the grades * credits by the total credits, and divides the result by 25.
+        /* This segment of code multiplies the given grades by the given credits.
+        Then, it adds the grades * credits together, as well as the total credits.
+        Lastly, it divides the grades * credits by the total credits, and divides the result by 25. */
 
         if (probablyGPA > 4)
         {
@@ -82,12 +107,16 @@ int main(void)
         printf("\n\aYour GPA is : %.2f\n\n", probablyGPA);
         //This returns the final calculated result to the user.
         }
-        if ((calcResponse == '2') || (calcResponse == 'N'))
+        else if ((strcmp(calcResponse, "No") == 0) || (strcmp(calcResponse, "no") == 0))
         //This segment of code is responsible for 
         {
             printf("\nWhat is your GPA? ");
             scanf("%f", &actualGPA);
             printf("\n\aYour GPA is %.2f\n\n", actualGPA);
+        }
+        else
+        {
+            printf("\nPlease enter a valid response.\n\n");
         }
     return 0;
 }
