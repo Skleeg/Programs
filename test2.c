@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include "myheader.h"
 
 int main(void)
 {
     int coinAmount = 0, changeInt = 0;
     float changeAmount = 0.0;
     int quarterAmount = 0, dimeAmount = 0, nickelAmount = 0, pennyAmount = 0;
+    char c;
 
     do
     {
@@ -13,7 +15,6 @@ int main(void)
     }
     while (changeAmount < 0);
     changeInt = changeAmount * 100 + 0.5;
-    printf("\n\n%d\n%f\n\n", changeInt, changeAmount);
 
     //while quarters are usable
     while (changeInt >= 25)
@@ -45,5 +46,7 @@ int main(void)
     }
     printf("Coins used: %d\n\n", coinAmount);
     printf("Breakdown: \nQuarters: %d\nDimes: %d\nNickels: %d\nPennies: %d\n\n", quarterAmount, dimeAmount, nickelAmount, pennyAmount);
+    printf("Press ENTER to continue\n");
+    scanf(" %c", &c);
     return 0;
 }
