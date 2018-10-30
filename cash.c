@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "myheader.h"
 
 int main(void)
 {
@@ -47,6 +46,6 @@ int main(void)
     printf("Coins used: %d\n\n", coinAmount);
     printf("Breakdown: \nQuarters: %d\nDimes: %d\nNickels: %d\nPennies: %d\n\n", quarterAmount, dimeAmount, nickelAmount, pennyAmount);
     printf("Press ENTER to continue\n");
-    scanf(" %c", &c);
+    getchar();
     return 0;
 }
