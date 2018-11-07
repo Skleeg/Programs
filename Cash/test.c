@@ -4,6 +4,7 @@ int main(void)
 {
     int coinAmount = 0, changeInt = 0;
     float changeAmount;
+    char i;
 
     printf("How much change is owed?\nIn dollars: ");
     if (scanf("%f", &changeAmount) != 1)
@@ -40,5 +41,9 @@ int main(void)
     }
     printf("\nYour change was: %.2f\n", changeAmount);
     printf("Coins used: %d\n\n", coinAmount);
+    printf("Press enter to continue.\n");
+
+    i = getchar();
+
     return 0;
 }
